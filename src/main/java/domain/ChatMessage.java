@@ -2,15 +2,26 @@ package domain;
 
 public class ChatMessage {
 
-    int useId;
+    User user;
     String message;
+    boolean sended;
+    int fromUserId;
 
-    public int getUseId() {
-        return useId;
+    public ChatMessage(User user, String message) {
+        this.message = message;
+        this.user = user;
+        this.sended = false;
     }
 
-    public void setUseId(int useId) {
-        this.useId = useId;
+    public ChatMessage() {
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getMessage() {
@@ -19,5 +30,21 @@ public class ChatMessage {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public boolean isSended() {
+        return sended;
+    }
+
+    public void setSended(boolean sended) {
+        this.sended = sended;
+    }
+
+    public int getFromUserId() {
+        return fromUserId;
+    }
+
+    public void setFromUserId(int fromUserId) {
+        this.fromUserId = fromUserId;
     }
 }

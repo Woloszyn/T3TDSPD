@@ -7,7 +7,7 @@ public class UpdateCoordinator {
 
     public void execute(Cluster cluster, int newCoordinatorId) {
         for (Process process : cluster.getProccessList()) {
-            process.setActive(process.getId() == newCoordinatorId);
+            process.setActive(process.getProcessId() == newCoordinatorId);
         }
     }
 

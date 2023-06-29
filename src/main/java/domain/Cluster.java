@@ -1,19 +1,16 @@
 package domain;
 
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Cluster {
+    private String category;
 
-    private static Cluster instance;
-
-    public static Cluster getInstance() {
-        if (instance == null) {
-            instance = new Cluster();
-        }
-        return instance;
+    public Cluster(String category) {
+        this.category = category;
     }
 
-    private List<Process> processList;
+    private List<Process> processList = new CopyOnWriteArrayList<>();
 
     public List<Process> getProccessList() {
         return processList;
@@ -25,6 +22,13 @@ public class Cluster {
 
     public void addProccess(Process process) {
         processList.add(process);
+    }
+
+
+    public void startLeaderElection() {
+        for (Process process : processList) {
+            process.startElection(this);
+        }
     }
 
 }

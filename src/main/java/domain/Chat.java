@@ -1,11 +1,23 @@
 package domain;
 
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Chat {
+    private static Chat instance;
 
-    List<ChatMessage> chatMessages;
-    List<User> users;
+    public static Chat getInstance() {
+        if (instance == null) {
+            instance = new Chat();
+        }
+        return instance;
+    }
+
+    public Chat() {
+    }
+
+    List<ChatMessage> chatMessages = new CopyOnWriteArrayList<>();
+    List<User> users = new CopyOnWriteArrayList<>();
 
     public List<ChatMessage> getChatMessages() {
         return chatMessages;
